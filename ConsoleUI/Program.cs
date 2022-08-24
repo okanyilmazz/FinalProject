@@ -22,7 +22,7 @@ namespace ConsoleUI
         private static void CategoryTest()
         {
             CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-            foreach (var category in categoryManager.GetAll())
+            foreach (var category in categoryManager.GetAll().Data)
             {
                 Console.WriteLine(category.CategoryName);
 
@@ -32,7 +32,7 @@ namespace ConsoleUI
         private static void ProductTest()
         {
             // ben InMemoryProductDal, EfProductDal ile çalışacağım demektir
-            ProductManager productManager = new ProductManager(new EfProductDal());
+            ProductManager productManager = new ProductManager(new EfProductDal(), new CategoryManager(new EfCategoryDal()));
             //foreach (var product in productManager.GetByUnitPrice(40, 100))
             //{
             //    Console.WriteLine(product.ProductName);
